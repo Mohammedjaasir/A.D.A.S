@@ -446,6 +446,40 @@ export default function Home() {
 
                       {isAnalyzing && (
                         <div className="space-y-6 pt-8 border-t border-white/5">
+                          {(() => {
+                            const getSystemStatus = (phase: number) => {
+                              if (phase === 0) return { title: "DATA SCIENCE (DS)", status: "INITIALIZING ENVIRONMENT", color: "text-emerald-400" };
+                              if (phase === 1) return { title: "DATA ANALYSIS", status: "PROCESSING DATASETS", color: "text-blue-400" };
+                              if (phase === 2) return { title: "DATA ANALYSIS", status: "STATISTICAL COMPUTING", color: "text-blue-400" };
+                              if (phase === 3) return { title: "MACHINE LEARNING (ML)", status: "MODEL SELECTION", color: "text-purple-400" };
+                              if (phase === 4) return { title: "MACHINE LEARNING (ML)", status: "VALIDATION PROTOCOLS", color: "text-purple-400" };
+                              if (phase === 5) return { title: "DEEP LEARNING (DL)", status: "NEURAL NETWORK TRAINING", color: "text-amber-400" };
+                              if (phase === 6) return { title: "ARTIFICIAL INTELLIGENCE", status: "GENERATING REPORT", color: "text-indigo-400" };
+                              return { title: "SYSTEM IDLE", status: "WAITING FOR INPUT", color: "text-zinc-500" };
+                            };
+                            const status = getSystemStatus(currentPhase);
+                            return (
+                              <div className="flex flex-col gap-2 p-5 rounded-2xl bg-zinc-950 border border-white/10 relative overflow-hidden">
+                                <div className={`absolute top-0 right-0 p-3 opacity-20 ${status.color}`}>
+                                  <Cpu className="w-24 h-24 rotate-12" />
+                                </div>
+                                <div className="flex items-center justify-between relative z-10">
+                                  <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${status.color} animate-pulse`}>
+                                    {status.title} ACTIVE
+                                  </span>
+                                  <div className="flex gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/20 animate-bounce" style={{ animationDelay: '0ms' }} />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/20 animate-bounce" style={{ animationDelay: '150ms' }} />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/20 animate-bounce" style={{ animationDelay: '300ms' }} />
+                                  </div>
+                                </div>
+                                <span className="text-2xl font-black text-white tracking-tight font-display relative z-10 mt-1">
+                                  {status.status}
+                                  <span className="animate-pulse">...</span>
+                                </span>
+                              </div>
+                            );
+                          })()}
                           <div className="flex items-center justify-between font-mono">
                             <span className="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">Pipeline_Buffer</span>
                             <span className="text-primary text-sm font-black">{Math.round(((currentPhase + 1) / 7) * 100)}%</span>
@@ -543,6 +577,28 @@ function ChatInterface({ headers, rows, result }: { headers: string[], rows: str
   const [input, setInput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const [loadingStep, setLoadingStep] = useState(0);
+
+  useEffect(() => {
+    if (!isGenerating) {
+      setLoadingStep(0);
+      return;
+    }
+    const interval = setInterval(() => {
+      setLoadingStep((prev) => (prev + 1));
+    }, 800);
+    return () => clearInterval(interval);
+  }, [isGenerating]);
+
+  const loadingStates = [
+    { text: "DATA SCIENCE (DS) OPERATIONS", color: "text-emerald-500" },
+    { text: "DATA ANALYSIS IN PROGRESS", color: "text-blue-500" },
+    { text: "MACHINE LEARNING (ML) EXECUTING", color: "text-purple-500" },
+    { text: "DEEP LEARNING (DL) INFERENCE", color: "text-amber-500" },
+    { text: "SYNTHESIZING INTELLIGENCE", color: "text-indigo-500" }
+  ];
+
+  const currentLoadingState = loadingStates[loadingStep % loadingStates.length];
 
   useEffect(() => {
     if (messages.length === 0) {
@@ -746,7 +802,7 @@ function ChatInterface({ headers, rows, result }: { headers: string[], rows: str
             className="flex justify-start"
           >
             <div className="bg-zinc-900/80 border border-white/5 p-4 rounded-2xl flex items-center gap-2 backdrop-blur-md">
-              <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">Reasoning</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${currentLoadingState.color}`}>{currentLoadingState.text}</span>
               <div className="flex gap-1">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full animate-[bounce_1s_infinite_0ms]" />
                 <div className="w-1.5 h-1.5 bg-primary rounded-full animate-[bounce_1s_infinite_200ms]" />
