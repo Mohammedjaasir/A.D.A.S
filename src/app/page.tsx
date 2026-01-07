@@ -99,6 +99,11 @@ const RELATED_TERMS = [
   { prefix: "Cognitive", suffix: "Insight Engine" }
 ];
 
+import dynamic from 'next/dynamic';
+
+const ThreeBackground = dynamic(() => import('@/components/ThreeBackground'), { ssr: false });
+
+
 export default function Home() {
   const [csvData, setCsvData] = useState<{
     headers: string[];
@@ -201,8 +206,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background grid-pattern">
-      <div className="fixed inset-0 pointer-events-none subtle-gradient" />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <ThreeBackground />
+      <div className="fixed inset-0 z-0 pointer-events-none grid-pattern opacity-30" />
+      <div className="fixed inset-0 z-0 pointer-events-none subtle-gradient" />
 
       <header className="sticky top-0 z-50 border-b bg-background/60 backdrop-blur-2xl border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
