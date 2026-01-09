@@ -1,6 +1,7 @@
 # Autonomous Decision Making AI-Scientist 
 
 ---
+https://github.com/Mohammedjaasir/A.D.A.S/blob/main/Screen%20Recording%202026-01-09%20121043.mp4
 
 An autonomous multi-agent AI system that checks data trustworthiness before applying Machine Learning, Deep Learning, and Generative AI.
 
