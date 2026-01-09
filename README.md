@@ -35,24 +35,28 @@ The objective of ADAS is to build an Autonomous AI Scientist that:
 
 ADAS follows a decision-first AI pipeline:
 
-Accepts a dataset (CSV)
+1.Accepts a dataset (CSV)
 
-Checks data quality using defined thresholds
+2.Checks data quality using defined thresholds
 
-Stops automation if data is unreliable
+3.Stops automation if data is unreliable
 
-If data is reliable:
+4.If data is reliable:
 
-Performs data analysis
+--Performs data analysis
 
-Trains ML models
+--Trains ML models
 
-Validates results scientifically
+--Validates results scientifically
 
-Applies Deep Learning only when needed
+--Applies Deep Learning only when needed
 
-Generates visualizations
+--Generates visualizations
 
-Explains decisions using Generative AI
+--Explains decisions using Generative AI
 
 The system can say “STOP” — which most AI systems cannot.
+
+---
+
+
