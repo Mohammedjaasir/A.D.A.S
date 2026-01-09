@@ -1,7 +1,9 @@
 # Autonomous Decision Making AI-Scientist 
 
 ---
-https://github.com/Mohammedjaasir/A.D.A.S/blob/main/Screen%20Recording%202026-01-09%20121043.mp4
+
+<img width="959" height="475" alt="image" src="https://github.com/user-attachments/assets/ca5eb34a-6a24-4528-9208-b92fb4b1675c" />
+
 
 An autonomous multi-agent AI system that checks data trustworthiness before applying Machine Learning, Deep Learning, and Generative AI.
 
