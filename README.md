@@ -59,4 +59,132 @@ The system can say “STOP” — which most AI systems cannot.
 
 ---
 
+🤖 Multi-Agent Architecture
+
+ADAS uses a multi-agent design, where each agent has a clear responsibility:
+
+| Agent                   | Role                                 |
+| ----------------------- | ------------------------------------ |
+| **Data Quality Agent**  | Checks data trustworthiness          |
+| **Analyst Agent**       | Cleans data and generates insights   |
+| **ML Agent**            | Selects and trains ML models         |
+| **Data Science Agent**  | Validates stability, bias, and trust |
+| **Deep Learning Agent** | Applies DL only if data justifies it |
+| **GenAI Agent**         | Explains results and visualizations  |
+
+Agents work together under a central orchestrator.
+
+---
+
+📊 Threshold-Based Decision System (0–1 Scale)
+
+ADAS uses normalized threshold values between 0 and 1:
+
+-0.0 → No trust
+
+-0.7 → Minimum acceptable trust
+
+-1.0 → High confidence
+
+If trust ≥ 0.7 → Continue automation
+If trust < 0.7 → Stop or warn
+
+This prevents blind automation.
+
+---
+
+📈 Visualizations Used
+
+Visualizations are generated only when necessary to justify decisions:
+
+-Missing value heatmap
+
+-Target distribution
+
+-Correlation heatmap
+
+-Feature importance
+
+-Confusion matrix / residual plots
+
+-Learning curves (only if DL is used)
+
+Visuals are used as evidence, not decoration.
+
+---
+
+🛠️ Technologies Used
+
+Backend
+
+-Python
+
+-FastAPI
+
+-Pandas, NumPy
+
+-Scikit-learn
+
+-XGBoost / LightGBM (optional)
+
+-PyTorch (conditional Deep Learning)
+
+Generative AI
+
+-OpenAI GPT (used only for explanation, not modeling)
+
+-Visualization
+
+-Matplotlib
+
+-Seaborn
+
+-Chart.js / Recharts (frontend)
+
+Frontend
+
+-HTML, CSS, React
+
+---
+
+🧠 Key Features
+
+✅ Autonomous decision-making
+
+✅ Multi-agent AI architecture
+
+✅ Stop-on-bad-data logic
+
+✅ Explainable AI reasoning
+
+✅ Domain-independent design
+
+✅ Research + hackathon ready
+
+---
+
+🏆 Why ADAS Is Different
+
+| Aspect                 | Traditional AI | ADAS |
+| ---------------------- | -------------- | ---- |
+| Trains blindly         | ✅              | ❌    |
+| Validates data first   | ❌              | ✅    |
+| Can stop execution     | ❌              | ✅    |
+| Uses DL only if needed | ❌              | ✅    |
+| Explains decisions     | ❌              | ✅    |
+
+---
+
+🚀 Future Enhancements
+
+-Support for time-series and image datasets
+
+-Live agent communication visualization
+
+-Model memory and learning from past runs
+
+-Cloud and Docker deployment
+
+
+
 
