@@ -59,8 +59,10 @@ function PointsBox(props: any) {
         }
     });
 
+    const { "data-orchids-name": _n, "data-orchids-id": _i, ...safeProps } = props;
+
     return (
-        <group rotation={[0, 0, Math.PI / 4]} {...props}>
+        <group rotation={[0, 0, Math.PI / 4]} {...safeProps}>
             <points ref={ref}>
                 <bufferGeometry>
                     <bufferAttribute

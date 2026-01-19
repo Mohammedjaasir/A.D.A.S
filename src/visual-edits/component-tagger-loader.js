@@ -267,6 +267,7 @@ const dreiElems = [
     "SpotLight",
     "Stage",
     "Stars",
+    "Sphere",
     "OrbitControls"
 ];
 const shouldTag = (name) => !threeFiberElems.includes(name) && !dreiElems.includes(name);

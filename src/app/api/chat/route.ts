@@ -82,8 +82,14 @@ export async function POST(req: Request) {
         const parsedResponse = JSON.parse(responseContent);
         return NextResponse.json(parsedResponse);
 
-    } catch (error) {
-        console.error("Chat API Error:", error);
+    } catch (error: any) {
+        console.error("Chat API Error Detailed:", {
+            message: error.message,
+            status: error.status,
+            type: error.type,
+            code: error.code,
+            headers: error.headers
+        });
         return NextResponse.json(
             { content: "I encountered an error processing your request. Please check the logs." },
             { status: 500 }
